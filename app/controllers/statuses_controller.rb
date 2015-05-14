@@ -5,7 +5,7 @@ class StatusesController < ApplicationController
 
   def create
    @status = Status.new(status_params) 
-   user = User.find(1)
+   user = User.find 1
    @status.creator = user
 
    if @status.save
