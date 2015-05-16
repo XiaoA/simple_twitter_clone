@@ -3,7 +3,7 @@
 <p>
   <ul>
     <% @user.statuses.each do |status| %>
-      <li><%= status.body %></li>
+      <li><%= status.body %> on <%= status.created_at %></li>
     <% end %>
   </ul>
 </p>
