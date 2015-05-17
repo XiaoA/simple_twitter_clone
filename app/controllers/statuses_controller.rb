@@ -8,8 +8,7 @@ class StatusesController < ApplicationController
 
   def create
    @status = Status.new(status_params) 
-   user = User.find 1
-   @status.creator = user
+   @status.creator = current_user
 
    if @status.save
      flash[:notice] = "Status created!"
