@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512030246) do
+ActiveRecord::Schema.define(version: 20150518025558) do
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "leader_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sqlite_sp_functions", id: false, force: :cascade do |t|
     t.text "name"
