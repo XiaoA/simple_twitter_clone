@@ -7,11 +7,16 @@ class Status < ActiveRecord::Base
   after_save :extract_mentions
 
   def extract_mentions
-    if  self.body =~ /@(\w*)/
-      user = User.find_by username: $1
-      if user
-        Mention.create(user_id: user.id, status_id: self.id)
+    mentions = self.body.scan(/@(\w*)/)
+    if mentions.size > 0
+      mentions.each do |mention|
+        m = mention.first
+        user = User.find_by username: m
+        if user
+          Mention.create(user_id: user.id, status_id: self.id)
+        end
       end
     end
   end
+
 end
