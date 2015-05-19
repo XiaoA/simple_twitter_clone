@@ -7,15 +7,15 @@ class StatusesController < ApplicationController
   end
 
   def create
-   @status = Status.new(status_params) 
-   @status.creator = current_user
+    @status = Status.new(status_params) 
+    @status.creator = current_user
 
-   if @status.save
-     flash[:notice] = "Status created!"
-     redirect_to user_path(@status.creator.username)
-   else
-     render :new
-   end
+    if @status.save
+      flash[:notice] = "Status created!"
+      redirect_to user_path(@status.creator.username)
+    else
+      render :new
+    end
   end
 
   

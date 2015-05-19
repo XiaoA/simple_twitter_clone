@@ -2,6 +2,7 @@
 <% if logged_in? %>
   Welcome, <%= current_user.username %>! |
   <%= link_to 'Timeline', timeline_path %> |
+  <%= link_to 'Mentions', mentions_path %> |
   <%= link_to 'New Status', new_status_path %> |
   <%= link_to 'Log Out', logout_path %>
 <% else %>

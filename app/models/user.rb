@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :statuses
+  has_many :mentions
+
   has_many :follower_relationships, class_name: "Relationship", foreign_key: "leader_id"
   has_many :leader_relationships, class_name: "Relationship", foreign_key: "follower_id"
 

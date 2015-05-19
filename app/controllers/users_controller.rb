@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user, only: [:follow, :unfollow, :timeline]
+  before_action :require_user, only: [:follow, :unfollow, :timeline, :mentions]
   
   def index
     @users = User.all
@@ -54,7 +54,11 @@ class UsersController < ApplicationController
     end
     @statuses.flatten!
   end
-  
+
+  def mentions
+    
+  end
+
   private
 
   def user_params
