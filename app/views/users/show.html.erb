@@ -2,9 +2,9 @@
 
 <% if logged_in? %>
   <% if !current_user.following_users.include?(@user) %>
-    <%= link_to "+ follow", follow_user_path(@user) %>
+    <%= link_to "+ follow", follow_user_path(@user), method: 'post' %>
 <% else %>
-  <%= link_to "- unfollow", unfollow_user_path(@user) %>
+  <%= link_to "- unfollow", unfollow_user_path(@user), method: 'post' %>
   <% end %>
 <% end %>
 
