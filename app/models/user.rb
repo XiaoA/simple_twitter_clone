@@ -13,4 +13,18 @@ class User < ActiveRecord::Base
   
   validates :username, presence: true
   validates :email, presence: true
+
+  def num_unread_mentions
+    mentions.where(viewed_at: nil).count
+  end
+
+  def unread_mentions
+    mentions.where(viewed_at: nil)
+  end
+
+  def mark_unread_mentions!
+    unread_mentions.each do |mention|
+      mention.mark_viewed!
+    end
+  end
 end
