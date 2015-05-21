@@ -25,7 +25,7 @@
 	      <li><%= link_to logout_path do %> Log Out <span class="glyphicon glyphicon-logout"></span><% end %></li>	
 	    </ul>
 	  </li>
-	<%else %>
+	<% else %>
 	  <li><%= link_to new_user_path do %> Sign Up<span class="glyphicon glyphicon-user"></span> <% end %></li>
 	  <li><%= link_to login_path  do %> Log In <span class="glyphicon glyphicon-log-in"></span> <% end %></li>
 	<% end %>
