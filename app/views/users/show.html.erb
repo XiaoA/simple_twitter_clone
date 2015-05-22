@@ -1,18 +1,29 @@
 <h3><%= link_to "@#{@user.username}", user_path(@user.username) %></h3>
 
+
+
 <% if logged_in? %>
   <% if !current_user.following_users.include?(@user) %>
     <%= link_to "+ follow", follow_user_path(@user), method: 'post' %>
-<% else %>
-  <%= link_to "- unfollow", unfollow_user_path(@user), method: 'post' %>
+  <% else %>
+    <%= link_to "- unfollow", unfollow_user_path(@user), method: 'post' %>
   <% end %>
 <% end %>
 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'shared/header', header: "Here's what @#{@user.username} is saying..." %>
+  </div>
+</div>
 
-<p>
-  <ul>
-    <% @user.statuses.each do |status| %>
-      <li><%= status.body %> on <%= status.created_at %></li>
-    <% end %>
-  </ul>
-</p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-2">
+    <div class="well">
+      <ul>
+	<% @user.statuses.each do |status| %>
+	  <li class="status-post"><span class="status-body"><%= status.body %></span><br> on <%= status.created_at %></li>
+	<% end %>
+      </ul>
+    </div>
+  </div>
+</div>
