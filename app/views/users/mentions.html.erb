@@ -1,7 +1,22 @@
-<%= render 'shared/header', header: "Mentions" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= render 'shared/header', header: "Mentions" %>
+    </div>
+  </div>
+  
+  <div class="well well-sm col-md-6 col-md-offset-3">
+    <% @current_user.mentions.each do |mention | %>
+      <div class="media">
+	<div class="media-left">
+	  <img class="media-object" src="snowflake.png" alt="icon_pic">
+	</div>
+	<div class="media-body">
+	  <h3 class="media-heading"><%= mention.status.body %> </h3><br>
+	  by <%= mention.status.creator.username %> at <%= mention.status.created_at %>
+	</div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<ul>
-  <% @current_user.mentions.each do |mention | %>
-    <li><%= mention.status.body %> by <%= mention.status.creator.username %> at <%= mention.status.created_at %>
-  <% end %>
-</ul>

@@ -1,7 +1,38 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5">
+<%= render 'shared/header', header: "Timeline" %>
+    </div>
+  </div>
+  <hl>
+    <div class="well well-sm col-md-6 col-md-offset-3">
+      <% @statuses.each do |status| %>
+	<div class="media">
+	  <div class="media-left">
+	    <img class="media-object" src="snowflake.png" alt="icon_pic">
+	  </div>
+	  <div class="media-body">
+	    <h2 class="media-heading"><%= status.body %> </h2>
+	    <%= link_to status.creator.username, status.creator.username %> <br><%= status.created_at %>
+	  </div>
+	</div>
+      <% end %>
+    </div>
+</div>
+
+
+
+
+
+
+
+---
+
 <%= render 'shared/header', header: "Timeline" %>
 
 <ul>
   <% @statuses.each do |status| %>
-    <li><%= status.body %> by <%= status.creator.username %> at <%= status.created_at %>
+    <li><%= status.body %> by <%= status.creator.username %> at <%= status.created_at %></li>
   <% end %>
 </ul>
